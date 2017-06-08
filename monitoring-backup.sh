@@ -65,7 +65,7 @@ main() {
   local no_heading="${1/#\//}"
   local no_tailing="${no_heading/%\//}"
   local name="${no_tailing//\//-}"
-  local file="$2/${name//\//-}.tar.gz"
+  local file="${2/%\//}/${name//\//-}.tar.gz"
   local size=0
 
   printf "\r[%s] - %s\n" "$(${cmd_date})" "Calculating $1 size"
