@@ -62,8 +62,8 @@ main() {
   local cmd_sha256sum=/usr/bin/sha256sum
   local cmd_tar=/usr/bin/tar
 
-  local no_heading="${1/#\//}"
-  local no_tailing="${no_heading/%\//}"
+  local no_leading="${1/#\//}"
+  local no_tailing="${no_leading/%\//}"
   local name="${no_tailing//\//-}"
   local file="${2/%\//}/${name//\//-}.tar.gz"
   local size=0
