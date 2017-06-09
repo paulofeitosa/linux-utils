@@ -67,7 +67,7 @@ main() {
   printf "\r[%s] - %s\n" "$(${cmd_date})" "Starting backup"
   if [ "${incremental}" -eq 0 ]; then
     local incremental_dir
-    incremental_dir="$2/incr/$(${cmd_date} +%A)"
+    incremental_dir="${2/%\//}/incr/$(${cmd_date} +%A)"
     if [ -e "${incremental_dir}" ]; then
       "${cmd_rm}" -fr "${incremental_dir}"
     fi
