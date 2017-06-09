@@ -9,7 +9,7 @@
 # `date` command path.
 export CMD_DATE=/usr/bin/date
 
-# Prints, to STDOUT, the timestamp then a message.
+# Prints the timestamp then a message.
 #
 # Parameters:
 #   $1  message to print
@@ -29,4 +29,54 @@ common::print() {
   fi
 
   printf "\r[%s]\t${color}%s${no_color}\n" "$(${CMD_DATE})" "$1"
+}
+
+# Prints a warning message.
+#
+# Parameters:
+#   $1  message to print
+#
+# Returns:
+#   Nothing
+#
+common::warn() {
+  common::print "$1" "\033[0;33m"
+}
+
+# Prints an error message.
+#
+# Parameters:
+#   $1  message to print
+#
+# Returns:
+#   Nothing
+#
+common::err() {
+  common::print "$1" "\033[0;31m" >&2
+}
+
+# Validates path for read operations.
+#
+# Parameters:
+#   $1  path
+#
+# Returns:
+#   0   path ok
+#   1   path not readable
+#
+common::validate_read() {
+  [ -r "$1" ] || return 1
+}
+
+# Validates path for write operations.
+#
+# Parameters:
+#   $1  path
+#
+# Returns:
+#   0   path ok
+#   1   path not writable
+#
+common::validate_write() {
+  [ -w "$1" ] || return 1
 }
