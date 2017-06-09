@@ -1,0 +1,6 @@
+[Unit]
+Description=Perform backup of SOURCE to DESTINATION
+After=local-fs.target
+
+[Service]
+ExecStart=/usr/local/bin/backup SOURCE DESTINATION
