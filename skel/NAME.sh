@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 #
 # SHORT DESCRIPTION.
 #
@@ -6,7 +6,10 @@
 # v1.0.0 DATE (YYYY-MM-DD)
 #
 
-. lib/stdout.sh
+readonly SCRIPT_NAME="$(readlink -f ${BASH_SOURCE[0]})"
+readonly SCRIPT_PATH="$(dirname ${SCRIPT_NAME})"
+# shellcheck source=lib/stdout.sh
+. "${SCRIPT_PATH}/lib/stdout.sh"
 
 set -o errexit
 set -o pipefail
